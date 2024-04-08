@@ -1,0 +1,60 @@
+trail_number: 3020
+data_path: './result_SHD/'
+num_workers: 1
+INFERENCE: False
+VALIDATION: True # the validation set is the test set
+CONTINUE: False
+SAVE: True
+CLIP: True
+
+dataset_setting:
+    data_path: './data/SHD/'
+    num_example: 8156 # the number of examples per epoch
+    batch_size: 128
+    duration: 100
+    max_time: 1.4
+    train: True
+    name: 'H5PY'
+    test_num: 2264
+    shuffle: True
+
+net_setting:
+    seed: 0 # the random seed to initialize the network
+    net_class: 'net_LIF_delay' # the type of network
+    layer_struct: [700,256,256,20] 
+    device: cpu
+    sampling_size: 1 # the number of simulaiton in the parallel computing pool, should be 1 here for simulaiton on GPU
+
+    time_step: 1
+    tau_mem: 10 # the time constant of membrane potential
+    tau_syn: 1 # the time constant of synapse
+    delay_size: 25 # the time delay belong to [-delay_size//2, delay_size//2]
+    SG : 'SurrGradSpike_ATan'
+    sg_alpha: 5 # the parameter of surrogate gradient
+
+training_setting:
+    num_epoch: 15 #0
+    recording: False
+
+    train_method: 'onehot_spk_temporal_square' #onehot_spk_count_CE onehot_spk_count_MSE onehot_spk_temporal_square
+    onehot_spk_temporal_acc_method: 'temporal' # only for onehot_spk_temporal_square
+    target_spks: [25,35,45,55,65,75,85,95] # only for onehot_spk_temporal_square
+
+    opt_lr: 0.005
+
+    weight_scale_list: 'kaiming' # 'kaiming' or the std of gaussian distribution initilization[0.1,0.1,0.1] 
+    weight_decay: 0.00001
+    w_range: [-3.6, 3.6]
+
+    # regularization 
+    regular_scale: 0 # regularization of the number of spikes 
+    dropout_rate: 0
+
+    scheduler: 'OneCycleLR'
+    scheduler_kwargs: {}
+
+
+
+
+
+

@@ -1,6 +1,9 @@
 To set up conda env:
     conda env create --name envname --file=env.yml
 
+To clone this repository
+    
+
 To run a simulation:
     python run_simulation.py --config_path ./config/MNIST_Sliced_LIF_RFR_3220.yml --seed 0 --device gpu
 

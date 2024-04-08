@@ -1,0 +1,74 @@
+trail_number: 3200
+data_path: './result_FashionMNIST_Sliced/'
+num_workers: 1
+INFERENCE: False
+VALIDATION: True # the validation set is the test set
+CONTINUE: False
+SAVE: True
+CLIP: True
+
+dataset_setting:
+    data_path: './data/FashionMNIST_Sliced/'
+    num_example: 60000 # the number of examples per epoch
+    batch_size: 256 
+    duration: 100
+    train: True
+    name: 'H5PY'
+    max_time: 100
+    test_num: 10000
+    shuffle: True
+
+net_setting:
+    seed: 0 # the random seed to initialize the network
+    net_class: 'net_rfr_spk' # the type of network
+    layer_struct: [56,256,256,10] #[56,128,64,10]
+    device: cpu
+    sampling_size: 1 # the number of simulaiton in the parallel computing pool, should be 1 here for simulaiton on GPU
+
+    time_step: 1
+    tau_mem: 10 # the time constant of membrane potential
+    tau_syn: 1 # the time constant of synapse
+    delay_size: 1 # the time delay belong to [-delay_size//2, delay_size//2]
+    SG : 'SurrGradSpike'
+    sg_gamma: 1.3 # the parameter of surrogate gradient 1.298335618604577
+    sg_beta: 1
+
+    # reference neurons
+    tau_syn_rfr: 1 # the time constant of synapse for reference spikes
+    rfr_spk_method: 'potent' # the method to generate reference spikes
+    num_rfr_neuron_layers: [64,64,10]
+
+training_setting:
+    num_epoch: 150
+    recording: False
+
+    train_method: 'onehot_spk_temporal_square' #onehot_spk_count_CE onehot_spk_count_MSE onehot_spk_temporal_square
+    onehot_spk_temporal_acc_method: 'temporal' # only for onehot_spk_temporal_square
+    target_spks: [25,35,45,55,65,75,85,95] # only for onehot_spk_temporal_square
+
+    opt_lr: 0.001
+
+    weight_scale_list: 'kaiming' #[1.3931217969221783,0.04031339073797483,0.14861032470996183 ] # 'kaiming' or the std of gaussian distribution initilization[0.1,0.1,0.1] 
+    weight_decay: 0
+    w_range: [-3.6, 3.6]
+
+    # regularization 
+    regular_scale: 0 # regularization of the number of spikes 
+    dropout_rate: 0
+
+    # reference neurons
+    rfr_init: 'uniform'
+    rfr_scale_layers: [1.1,1.1,1.1] #[ 0.8290267842361579, 0.061888812696388726, 0.44872287934786875] # the std of gaussian distribution initilization 
+    w_rfr_scale_layers: 'kaiming' #[0.3275481351816275, 0.8611357522425889, 0.43913362836933756] # 'kaiming' or the std of gaussian distribution initilization[0.1,0.1,0.1] 
+    
+    rfr_lr: 0.001 # the learning rate for reference spikes
+    rfr_regular_scale: 0.0001  # regularization of the number of reference spikes spikes 
+    rfr_range: [0,2] # the range of the membrane potential of the reference neurons
+    rfr_decay: 0 # the decay of the membrane potential of the reference neurons
+
+    
+
+
+
+
+
