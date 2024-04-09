@@ -2,7 +2,7 @@ trail_number: 3320
 data_path: './result_FashionMNIST_Sliced/'
 num_workers: 1
 INFERENCE: False
-VALIDATION: True # the validation set is the test set
+VALIDATION: True # the validation set is the test set, the test set is not used to tune hyper-parameters
 CONTINUE: False
 SAVE: True
 CLIP: True
