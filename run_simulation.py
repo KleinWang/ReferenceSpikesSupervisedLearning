@@ -163,7 +163,7 @@ class simulation_shell:
                 
                 acc_batches = []
                 loss_batches = []
-                print('Validation -------------------------')
+                print('Test -------------------------')
                 with torch.no_grad():
                     for x_data, y_data in self.val_dl:
 
@@ -364,13 +364,18 @@ if __name__ == "__main__":
     train_accs+=np.average(np.average(simulation.acc_batches_hist_samples[:,:,:], axis=0), axis=-1).tolist()
 
     # print and save
+    
+    print('\n')
+    print('\n')
+    print('Summary:')
     print('*****************')
     print('loss value:')
     print(float(np.average(simulation.loss_batches_hist_samples[:,-1,:])))
-    print('the average acc of the test dataset({}) is:'.format(simulation.dataset_setting['test_num']))
-    print(simulation.val_acc) #there is no validation set, or the validation set is the testset
-    print('the time you spent is: ')
-    print((time_end-time_start)/60)
+    print('The acc of the test dataset({}) is:'.format(simulation.dataset_setting['test_num']))
+    print('{}\%'.format(simulation.val_acc)) #there is no validation set, or the validation set is the testset
+    print('The test set is not used to tune hyper-parameters')
+    print('The time you spent is: ')
+    print('{} mins'.format((time_end-time_start)/60))
     print('*****************')
     np.savez(simulation.data_path+'result_{}.npz'.format(simulation.trail_number), test_accs=test_accs, train_accs=train_accs)
     
