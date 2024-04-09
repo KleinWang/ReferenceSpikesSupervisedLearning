@@ -1,21 +1,21 @@
-trail_number: 3020
+trail_number: 9999
 data_path: './result_SHD/'
 num_workers: 1
 INFERENCE: False
 VALIDATION: True # the validation set is the test set
 CONTINUE: False
-SAVE: True
+SAVE: False
 CLIP: True
 
 dataset_setting:
     data_path: './data/SHD/'
-    num_example: 8156 # the number of examples per epoch
+    num_example: 1000 # the number of examples per epoch
     batch_size: 128
     duration: 100
     max_time: 1.4
     train: True
     name: 'H5PY'
-    test_num: 2264
+    test_num: 1000
     shuffle: True
 
 net_setting:
@@ -33,7 +33,7 @@ net_setting:
     sg_alpha: 5 # the parameter of surrogate gradient
 
 training_setting:
-    num_epoch: 150
+    num_epoch: 3
     recording: False
 
     train_method: 'onehot_spk_temporal_square' #onehot_spk_count_CE onehot_spk_count_MSE onehot_spk_temporal_square

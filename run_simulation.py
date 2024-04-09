@@ -368,9 +368,16 @@ if __name__ == "__main__":
     print('loss value:')
     print(float(np.average(simulation.loss_batches_hist_samples[:,-1,:])))
     print('the average acc of the test dataset({}) is:'.format(simulation.dataset_setting['test_num']))
-    print(simulation.val_acc)
-    print('there is no validation set, or the validation set is the testset')
+    print(simulation.val_acc) #there is no validation set, or the validation set is the testset
     print('the time you spent is: ')
     print((time_end-time_start)/60)
     print('*****************')
     np.savez(simulation.data_path+'result_{}.npz'.format(simulation.trail_number), test_accs=test_accs, train_accs=train_accs)
+    
+    # save the result in txt file
+    file_path = simulation.data_path+"result_{}.txt".format(simulation.trail_number)
+    print('A text file is generated, {}'.format(file_path))
+    with open(file_path, "w") as text_file:
+        for i in range(len(train_accs)):
+            text_file.write('epoch {} \n'.format(i))
+            text_file.write('train acc: {}, test acc: {}\n'.format(train_accs[i], test_accs[i]))
