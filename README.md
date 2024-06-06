@@ -1,6 +1,6 @@
 * To clone this repository
 
-    * `git clone https://oauth2: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@github.com/KleinWang/ReferenceSpikes_SupervisedLearning.git`
+    * `git clone https://github.com/KleinWang/ReferenceSpikes_SupervisedLearning.git`
     
 * To set up conda env:
     * `cd ./ReferenceSpikes_SupervisedLearning/`
