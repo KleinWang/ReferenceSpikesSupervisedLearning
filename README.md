@@ -1,3 +1,5 @@
+This project is the source code for paper "Trainable Reference Spikes Improve Temporal Information Process- ing of SNNs with Supervised Learning" published in 2024 on Neural Computation by Zeyuan Wang and Luis Cruz. The code is opensource and under the MIT License.
+
 * To clone this repository
 
     * `git clone https://github.com/KleinWang/ReferenceSpikesSupervisedLearning.git`
@@ -30,3 +32,9 @@
     * 0-9 for different seeds, # the random seed will be overwriten by the seed provided in the command line.
 
     * For example, MNIST_Sequential_LIF_RFR_3220 means the result on dataset MNIST_Sequential of a network with the one_hot_temporal_sqaure loss function, reference spikes, ramdom time delay in range [-12,12]ms, and random seed 0.
+
+* Citation to other codes:
+     * The code of the function SurrGradSpike is from the opensource project https://github.com/fzenke/spytorch
+     * The code to load the SHD dataset is from the opensource project https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/
+     * We thank all the authors who create their brilliant work that our work relies on. Please find more reference in the end of our published paper.
+  
