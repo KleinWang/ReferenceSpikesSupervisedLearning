@@ -34,7 +34,7 @@ This project is the source code for paper "Trainable Reference Spikes Improve Te
     * For example, MNIST_Sequential_LIF_RFR_3220 means the result on dataset MNIST_Sequential of a network with the one_hot_temporal_sqaure loss function, reference spikes, ramdom time delay in range [-12,12]ms, and random seed 0.
 
 * Citation to other codes:
-     * The code of the function SurrGradSpike is from the opensource project https://github.com/fzenke/spytorch
+     * The code of the function SurrGradSpike and SurrGradSpike_ATan is from and modified based on the opensource project https://github.com/fzenke/spytorch
      * The code to load the SHD dataset is from the opensource project https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/
      * We thank all the authors who share their brilliant project that our work relies on. Please find more reference in the end of our published paper.
   
