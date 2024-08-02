@@ -36,5 +36,5 @@ This project is the source code for paper "Trainable Reference Spikes Improve Te
 * Citation to other codes:
      * The code of the function SurrGradSpike and SurrGradSpike_ATan is from and modified based on the opensource project https://github.com/fzenke/spytorch
      * The code to load the SHD dataset is from the opensource project https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/
-     * We thank all the authors who share their brilliant project that our work relies on. Please find more reference in the end of our published paper.
+     * We thank all the authors who share their brilliant projects that our work relies on. Please find more reference in the end of our published paper.
   
